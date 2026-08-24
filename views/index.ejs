@@ -1,13 +1,110 @@
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-</head>
+<%- include('partials/head') %>
 
-<body>
+<body class="crt-overlay">
 
-    <h1>Developer Command Center</h1>
-    <h2>System Online</h2>
-    <p>Welcome Commander!</p>
+    <%- include('partials/loading-screen') %>
+    <%- include('partials/navbar') %>
+
+    <main class="command-center-container">
+
+        <!-- HERO / COMMAND STATUS PANEL -->
+        <section class="hud-panel hero-panel">
+            <div class="panel-header">
+                <span class="status-indicator online"></span>
+                <span class="panel-title">[ SYSTEM STATUS: OPERATIONAL ]</span>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="DEVELOPER COMMAND CENTER">DEVELOPER COMMAND CENTER</h1>
+                <p class="commander-greeting">WELCOME BACK, COMMANDER.</p>
+                <p class="mission-brief">> Mission: Architect responsive applications, engineer scalable backends, and deploy robust database systems.</p>
+
+                <div class="action-buttons">
+                    <a href="/projects" class="hud-btn primary">VIEW QUEST LOG</a>
+                    <a href="/contact" class="hud-btn secondary">INITIATE CONTACT</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS / SKILLS TELEMETRY -->
+        <section class="hud-panel stats-panel">
+            <div class="panel-header">
+                <span class="panel-title">[ SKILL TELEMETRY & SPECS ]</span>
+            </div>
+
+            <div class="skills-grid">
+                
+                <div class="skill-card">
+                    <div class="skill-info">
+                        <span>NODE.JS / EXPRESS</span>
+                        <span class="skill-lvl">LVL 90</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-info">
+                        <span>PYTHON / FLASK</span>
+                        <span class="skill-lvl">LVL 85</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-info">
+                        <span>SQL / POSTGRESQL / MYSQL</span>
+                        <span class="skill-lvl">LVL 88</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-info">
+                        <span>JAVASCRIPT / VANILLA JS</span>
+                        <span class="skill-lvl">LVL 92</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="fill" style="width: 92%;"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS / QUEST LOG -->
+        <section class="hud-panel projects-panel">
+            <div class="panel-header">
+                <span class="panel-title">[ FEATURED DEPLOYMENTS ]</span>
+            </div>
+
+            <div class="quest-grid">
+
+                <!-- Project Card 1 -->
+                <article class="quest-card">
+                    <div class="quest-badge">COMPLETED</div>
+                    <h3>Martech Analyser</h3>
+                    <p>Full-stack business analytics platform featuring real-time inventory tracking, user authentication, and sales telemetry.</p>
+                    <div class="tech-tags">
+                        <span>Express</span>
+                        <span>Node.js</span>
+                        <span>MySQL</span>
+                    </div>
+                    <a href="/projects" class="quest-link">INSPECT LOG &rarr;</a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+
 </body>
 </html>
