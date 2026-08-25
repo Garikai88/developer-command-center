@@ -8,8 +8,64 @@
     <main class="command-center-container">
 
         <!-- HEADER PANEL -->
-        
+        <section class="hud-panel">
+            <div class="panel-header">
+                <span class="status-indicator online"></span>
+                <span class="panel-title">[ COMMS // INITIATE CONTACT ]</span>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="OPEN CHANNEL">OPEN CHANNEL</h1>
+                <p class="mission-brief">> Transmit a message to establish contact. Response time: 24-48 hours.</p>
+            </div>
+        </section>
+
+        <!-- CONTACT FORM PANEL -->
+        <section class="hud-panel">
+            <div class="panel-header">
+                <span class="panel-title">[ TRANSMISSION FORM ]</span>
+            </div>
+
+            <% if (typeof error !== 'undefined' && error) { %>
+                <div class="form-banner error-banner">
+                    <span>⚠ <%= error %></span>
+                </div>
+            <% } %>
+
+            <% if (typeof success !== 'undefined' && success) { %>
+                <div class="form-banner success-banner">
+                    <span>✔ <%= success %></span>
+                </div>
+            <% } %>
+
+            <form class="contact-form" action="/contact" method="POST">
+
+                <div class="form-group">
+                    <label for="name">CALLSIGN (NAME)</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name"
+                        value="<%= typeof values !== 'undefined' && values.name ? values.name : '' %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">RETURN FREQUENCY (EMAIL)</label>
+                    <input type="email" id="email" name="email" required placeholder="you@example.com"
+                        value="<%= typeof values !== 'undefined' && values.email ? values.email : '' %>">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">MESSAGE PAYLOAD</label>
+                    <textarea id="message" name="message" rows="6" required placeholder="Type your message..."><%= typeof values !== 'undefined' && values.message ? values.message : '' %></textarea>
+                </div>
+
+                <button type="submit" class="hud-btn primary">TRANSMIT MESSAGE</button>
+
+            </form>
+        </section>
 
     </main>
 
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+
 </body>
+
