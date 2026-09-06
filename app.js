@@ -1,8 +1,12 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const homeRoutes = require("./routes/homeRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const contactRoutes = require("./routes/contactRoutes");
+const aboutRoutes = require("./routes/aboutRoutes");
+const certificatesRoutes = require("./routes/certificatesRoutes");
+const { notFound, errorHandler} = require("./middleware/errorHandler");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +26,12 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", homeRoutes);
 app.use("/projects", projectRoutes);
 app.use("/contact", contactRoutes);
+app.use("/about", aboutRoutes);
+app.use("/certificates", certificatesRoutes);
+
+app.use(notFound); // 404 handler
+app.use(errorHandler); // General error handler
+
 
 app.listen(PORT, () => {
     console.log(`Command Center live at http://localhost:${PORT}`);

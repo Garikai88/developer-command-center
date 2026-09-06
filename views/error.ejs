@@ -1,0 +1,33 @@
+<%- include('partials/head') %>
+
+<body class="crt-overlay">
+
+    <%- include('partials/loading-screen') %>
+    <%- include('partials/navbar') %>
+
+    <main class="command-center-container">
+
+        <section class="hud-panel">
+            <div class="panel-header">
+                <span class="status-indicator online"></span>
+                <span class="panel-title">[ ERROR // <%= statusCode %>]</span>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="<%= title %>"><%= title %></h1>
+                <p class="mission-brief">> <%= message %></p>
+
+                <div class="action-buttons">
+                    <a href="/" class="hud-btn primary">RETURN TO BASE</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
+    
+</body>
