@@ -1,4 +1,5 @@
 const { sendContactEmail } = require("../utils/mailer");
+const { createContact } = require("../models/Contact");
 
 exports.getContactPage = (req, res) => {
     res.render("contact", {
@@ -18,6 +19,7 @@ exports.submitContactForm = async (req, res) => {
     }
 
     try {
+        await createContact({ name, email, message });
         await sendContactEmail({ name, email, message });
 
         res.render("contact", {
@@ -25,7 +27,7 @@ exports.submitContactForm = async (req, res) => {
             success: "Message transmitted successfully. Standby for response."
         });
     } catch (err) {
-        console.error("Email send failed:", err);
+        console.error("Contact submission failed:", err);
         res.status(500).render("contact", {
             title: "Initiate Contact",
             error: "Transmission failed. Please try again later.",
@@ -33,4 +35,3 @@ exports.submitContactForm = async (req, res) => {
         });
     }
 };
-

@@ -1,85 +1,55 @@
 <%- include('partials/head') %>
 
-<body class="crt-overlay"> 
+<body class="crt-overlay">
 
-```
-<%- include('partials/loading-screen') %> 
-<%- include('partials/navbar') %> 
+    <%- include('partials/loading-screen') %>
+    <%- include('partials/navbar') %>
 
-<main class="command-center-container"> 
+    <main class="command-center-container">
 
-    <!-- HEADER PANEL --> 
-    <section class="hud-panel"> 
-        <div class="panel-header"> 
-            <span class="status-indicator online"></span> 
-            <span class="panel-title">[ ARCHIVE // CERTIFICATIONS ]</span> 
-        </div> 
+        <!-- HEADER PANEL -->
+        <section class="hud-panel">
+            <div class="panel-header">
+                <span class="status-indicator online"></span>
+                <span class="panel-title">[ ARCHIVE // CERTIFICATIONS ]</span>
+            </div>
 
-        <div class="hero-content"> 
-            <h1 class="glitch-text" data-text="CERTIFICATION ARCHIVE">CERTIFICATION ARCHIVE</h1> 
-            <p class="mission-brief">> Verified credentials and completed training modules.</p> 
-        </div> 
-    </section> 
+            <div class="hero-content">
+                <h1 class="glitch-text" data-text="CERTIFICATION ARCHIVE">CERTIFICATION ARCHIVE</h1>
+                <p class="mission-brief">> Verified credentials and completed training modules.</p>
+            </div>
+        </section>
 
-    <!-- CERTIFICATE GRID --> 
-    <section class="hud-panel"> 
-        <div class="quest-grid"> 
+        <!-- CERTIFICATE GRID -->
+        <section class="hud-panel">
+            <div class="quest-grid">
 
-            <!-- CERTIFICATE 01 --> 
-            <article class="quest-card"> 
-                <div class="quest-badge">VERIFIED</div> 
-                <h3>Certificate in Web &amp; Computer Programming</h3> 
-                <p>
-                    Issued by BYU-Pathway Worldwide — foundational training in
-                    web development, programming, and computer programming concepts.
-                </p> 
-                <div class="tech-tags"> 
-                    <span>BYU-PATHWAY</span> 
-                    <span>COMPLETED</span> 
-                </div> 
-                <a href="#" class="quest-link">VIEW CREDENTIAL &rarr;</a> 
-            </article> 
+                <% if (certificates.length === 0) { %>
+                    <p class="mission-brief">> No certifications logged yet.</p>
+                <% } else { %>
+                    <% certificates.forEach(cert => { %>
+                        <article class="quest-card">
+                            <div class="quest-badge"><%= cert.badge || 'VERIFIED' %></div>
+                            <h3><%= cert.title %></h3>
+                            <p><%= cert.description %></p>
+                            <div class="tech-tags">
+                                <span><%= cert.issuer %></span>
+                                <span><%= cert.status %></span>
+                            </div>
+                            <a href="<%= cert.credential_url || '#' %>" target="_blank" class="quest-link">
+                                <%= cert.link_label || 'VIEW CREDENTIAL' %> &rarr;
+                            </a>
+                        </article>
+                    <% }) %>
+                <% } %>
 
-            <!-- CERTIFICATE 02 --> 
-            <article class="quest-card"> 
-                <div class="quest-badge">VERIFIED</div> 
-                <h3>National Certificate in Machine Shop Engineering</h3> 
-                <p>
-                    Issued by Ekurhuleni West TVET College — technical training
-                    in machine shop engineering, fitting and turning, machining,
-                    maintenance, and engineering workshop practices. Evaluated by HEXCCO, Harare, Zimbabwe.
-                </p> 
-                <div class="tech-tags"> 
-                    <span>EWC TVET COLLEGE</span> 
-                    <span>COMPLETED</span> 
-                </div> 
-                <a href="#" class="quest-link">VIEW CREDENTIAL &rarr;</a> 
-            </article> 
+            </div>
+        </section>
 
-            <!-- CURRENT STUDIES --> 
-            <article class="quest-card"> 
-                <div class="quest-badge">IN PROGRESS</div> 
-                <h3>Software Development</h3> 
-                <p>
-                    Currently pursuing Software Development through BYU-Pathway
-                    Worldwide, with a focus on web development, backend systems,
-                    databases, programming, and full-stack development.
-                </p> 
-                <div class="tech-tags"> 
-                    <span>BYU-PATHWAY</span> 
-                    <span>IN PROGRESS</span> 
-                </div> 
-                <a href="#" class="quest-link">VIEW PROGRAM &rarr;</a> 
-            </article> 
+    </main>
 
-        </div> 
-    </section> 
-
-</main> 
-
-<%- include('partials/footer') %> 
-<%- include('partials/scripts') %> 
-```
+    <%- include('partials/footer') %>
+    <%- include('partials/scripts') %>
 
 </body>
 

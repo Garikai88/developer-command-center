@@ -25,50 +25,27 @@
         <section class="hud-panel">
             <div class="quest-grid">
 
-                <!-- MarTech Analytics Suite -->
-                <article class="quest-card">
-                    <div class="quest-badge">ACTIVE</div>
-                    <h3>MarTech Analytics Suite</h3>
-                    <p>Full-stack marketing session analytics backend linked with Express routing and custom session tracking logic.</p>
-                    <div class="tech-tags">
-                        <span>Node.js</span>
-                        <span>Express</span>
-                        <span>PostgreSQL</span>
-                        <span>JavaScript</span>
-                    </div>
-
-                    <a href="https://github.com" target="_blank" class="quest-link">VIEW REPO &rarr;</a>
-                </article>
-
-                <!-- MobiBank+ Platform -->
-                <article class="quest-card">
-                    <div class="quest-badge">COMPLETED</div>
-                    <h3>MobiBank+ UI/UX</h3>
-                    <p>Site architecture plan and high-fidelity modular user interfaces for a modern mobile banking platform.</p>
-                    <div class="tech-tags">
-                        <span>HTML5</span>
-                        <span>CSS Grid</span>
-                        <span>JavaScript</span>
-                    </div>
-
-                    <a href="#" class="quest-link">VIEW SPEC &rarr;</a>
-                </article>
-
-                <!-- Text Tools Utility App -->
-                <article class="quest-card">
-                    <div class="quest-badge">COMPLETED</div>
-                    <h3>Text Tools Suite</h3>
-                    <p>Client-side text manipulation utilities including word counters, character counters, and dynamic case converters.</p>
-                    <div class="tech-tags">
-                        <span>Vanilla JS</span>
-                        <span>HTML/CSS</span>
-                    </div>
-
-                    <a href="#" class="quest-link">VIEW SPEC &rarr;</a>
-                </article>
+                <% if (projects.length === 0) { %>
+                    <p class="mission-brief">> No missions logged yet.</p>
+                <% } else { %>
+                    <% projects.forEach(project => { %>
+                        <article class="quest-card">
+                            <div class="quest-badge"><%= project.status %></div>
+                            <h3><%= project.title %></h3>
+                            <p><%= project.description %></p>
+                            <div class="tech-tags">
+                                <% project.tech_tags.forEach(tag => { %>
+                                    <span><%= tag %></span>
+                                <% }) %>
+                            </div>
+                            <a href="<%= project.link || '#' %>" target="_blank" class="quest-link">
+                                <%= project.link_label %> &rarr;
+                            </a>
+                        </article>
+                    <% }) %>
+                <% } %>
 
             </div>
-
         </section>
 
     </main>
